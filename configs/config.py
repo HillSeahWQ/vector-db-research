@@ -23,3 +23,5 @@ HYPERPARAMETERS = {
     "nbits": 8   # bits per subvector
 }
 DATASET_NAME = "kyndryl_pdfs"
+INDEX_SEARCH_PARAMS = None
+TOP_K=5
