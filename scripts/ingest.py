@@ -17,8 +17,8 @@ def main():
     # Build collection name
     collection_name = build_collection_name(
         dataset=cfg.DATASET_NAME,
-        index_type=cfg.INDEX_TYPE,
-        similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE,
+        index_type=cfg.INDEX_TYPE, # to edit
+        similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE, # to edit
         hyperparameters=cfg.HYPERPARAMETERS
     )
     logger.info(f"Collection name: {collection_name}")
@@ -27,10 +27,11 @@ def main():
     logger.info(f"Processing documents in: {cfg.DATA_DIR}")
     embeddings, metadatas = get_embeddings_and_metadata(
         input_dir=cfg.DATA_DIR,
-        model_name=cfg.MODEL_NAME,
         chunk_size=cfg.CHUNK_SIZE,
         chunk_overlap=cfg.CHUNK_OVERLAP,
-        batch_size=cfg.BATCH_SIZE
+        batch_size=cfg.BATCH_SIZE,
+        model_name=cfg.MATRYOSHKA_EMBEDDING_MODEL_NAME, # to edit
+        model_kwargs=cfg.MATRYOSHKA_KWARGS # to edit
     )
     logger.info(f"Generated embeddings for {len(embeddings)} chunks")
 

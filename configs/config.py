@@ -1,11 +1,12 @@
 from pathlib import Path
 
 # Directories
-DATA_DIR = Path().cwd() / 'data' / 'kyndryl-docs-test'
-LOG_DIR = Path().cwd() / 'logs'
+DATA_DIR = Path().cwd() / "data" / "kyndryl-docs-test"
+LOG_DIR = Path().cwd() / "logs"
 
 # Embedding model
-MODEL_NAME = 'sentence-transformers/all-mpnet-base-v2'
+BASE_EMBEDDING_MODEL_NAME = "sentence-transformers/all-mpnet-base-v2"
+MATRYOSHKA_EMBEDDING_MODEL_NAME = "tomaarsen/mpnet-base-nli-matryoshka"
 
 # Chunking
 CHUNK_SIZE = 200      # characters per chunk (~150-250 tokens)
@@ -22,6 +23,10 @@ HYPERPARAMETERS = {
     "m": 16,     # number of subvectors
     "nbits": 8   # bits per subvector
 }
+MATRYOSHKA_KWARGS = {
+    "truncate_dim": 64
+}
+BASE_MODEL_KWARGS = None
 DATASET_NAME = "kyndryl_pdfs"
 INDEX_SEARCH_PARAMS = None
 TOP_K=5
