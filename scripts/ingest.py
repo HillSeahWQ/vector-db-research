@@ -19,7 +19,7 @@ def main():
         dataset=cfg.DATASET_NAME,
         index_type=cfg.INDEX_TYPE, # to edit
         similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE, # to edit
-        hyperparameters=cfg.HYPERPARAMETERS
+        hyperparameters=cfg.INDEXING_HYPERPARAMETERS # to edit
     )
     logger.info(f"Collection name: {collection_name}")
 
@@ -30,8 +30,8 @@ def main():
         chunk_size=cfg.CHUNK_SIZE,
         chunk_overlap=cfg.CHUNK_OVERLAP,
         batch_size=cfg.BATCH_SIZE,
-        model_name=cfg.MATRYOSHKA_EMBEDDING_MODEL_NAME, # to edit
-        model_kwargs=cfg.MATRYOSHKA_KWARGS # to edit
+        model_name=cfg.EMBEDDING_MODEL_NAME, # to edit
+        model_kwargs=cfg.EMBEDDING_MODEL_KWARGS # to edit
     )
     logger.info(f"Generated embeddings for {len(embeddings)} chunks")
 
@@ -40,9 +40,9 @@ def main():
     build_milvus_index(
         embeddings=embeddings,
         metadatas=metadatas,
-        similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE,
-        index_type=cfg.INDEX_TYPE,
-        hyperparameters=cfg.HYPERPARAMETERS,
+        similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE, # to edit
+        index_type=cfg.INDEX_TYPE, # to edit
+        hyperparameters=cfg.INDEXING_HYPERPARAMETERS, # to edit
         collection_name=collection_name,
         host=cfg.MILVUS_HOST,
         port=cfg.MILVUS_PORT,

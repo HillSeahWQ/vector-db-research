@@ -18,7 +18,7 @@ def main():
         dataset=cfg.DATASET_NAME,
         index_type=cfg.INDEX_TYPE,
         similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE,
-        hyperparameters=cfg.HYPERPARAMETERS,
+        hyperparameters=cfg.INDEXING_HYPERPARAMETERS,
     )
     logger.info(f"Using collection: {collection_name}")
 
@@ -31,7 +31,7 @@ def main():
     # Search
     all_results = search_milvus(
         queries=queries,
-        embedding_model=cfg.MODEL_NAME,
+        embedding_model=cfg.EMBEDDING_MODEL_NAME,
         similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE,
         index_search_params=cfg.INDEX_SEARCH_PARAMS,
         top_k=cfg.TOP_K,
