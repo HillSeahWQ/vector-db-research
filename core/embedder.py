@@ -11,6 +11,22 @@ logger = get_logger(__name__)
 # ---------------------------
 # Embedding + Metadata
 # ---------------------------
+
+
+def get_embedding_model(
+    model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+    model_kwargs: Optional[Dict[str, Any]] = None
+) -> SentenceTransformer:
+    
+    model_kwargs = model_kwargs or {}
+    logger.info(f"Loading embedding model: {model_name} | model config: {model_kwargs}")
+
+    # Load model (can be swapped with custom loaders later if needed)
+    model = SentenceTransformer(model_name, **model_kwargs)
+    
+    return model
+
+    
 def collect_chunks_and_metadata(
     input_dir: str,
     chunk_size: int = 800,
@@ -49,11 +65,7 @@ def embed_chunks(
     Embed text chunks using a configurable embedding model.
     Supports SentenceTransformer and models with extra parameters.
     """
-    model_kwargs = model_kwargs or {}
-    logger.info(f"Loading embedding model: {model_name}")
-
-    # Load model (can be swapped with custom loaders later if needed)
-    model = SentenceTransformer(model_name, **model_kwargs)
+    model = get_embedding_model(model_name, model_kwargs)
 
     vectors = []
     for i in tqdm(range(0, len(chunks), batch_size), desc="Embedding"):

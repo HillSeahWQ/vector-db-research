@@ -23,9 +23,7 @@ def main():
     logger.info(f"Using collection: {collection_name}")
 
     # Example queries
-    queries = [
-        "How much does Kyndryl cover for surgeries"
-    ]
+    queries=cfg.QUERIES
     logger.info(f"Running {len(queries)} queries against collection `{collection_name}`")
 
     # Search
