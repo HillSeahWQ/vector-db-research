@@ -1,5 +1,5 @@
 import numpy as np
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from pymilvus import Collection
 from sentence_transformers import SentenceTransformer
 

@@ -30,6 +30,7 @@ def main():
     all_results = search_milvus(
         queries=queries,
         embedding_model=cfg.EMBEDDING_MODEL_NAME,
+        embedding_model_kwargs=cfg.EMBEDDING_MODEL_KWARGS,
         similarity_metric_type=cfg.SIMILARITY_METRIC_TYPE,
         index_search_params=cfg.INDEX_SEARCH_PARAMS,
         top_k=cfg.TOP_K,
