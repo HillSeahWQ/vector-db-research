@@ -13,6 +13,7 @@ logger = get_logger(__name__)
 def search_milvus(
     queries: List[str],
     embedding_model: str = "all-MiniLM-L6-v2",
+    embedding_model_kwargs: Optional[Dict[str, Any]] = None,
     similarity_metric_type: str = "COSINE",
     index_search_params: Optional[Dict] = None,
     top_k: int = 5,
@@ -43,7 +44,7 @@ def search_milvus(
 
     # Generate embeddings for queries
     logger.info(f"Encoding {len(queries)} queries using {embedding_model} ...")
-    model = SentenceTransformer(embedding_model)
+    model = SentenceTransformer(embedding_model, **embedding_model_kwargs)
     query_embeddings = model.encode(queries, convert_to_numpy=True, normalize_embeddings=True)
 
     # Load the collection
