@@ -1,11 +1,8 @@
 from pathlib import Path
 
 # Directories
-DATA_DIR = Path().cwd() / 'data' / 'kyndryl-docs-test'
-LOG_DIR = Path().cwd() / 'logs'
-
-# Embedding model
-MODEL_NAME = 'sentence-transformers/all-mpnet-base-v2'
+DATA_DIR = Path().cwd() / "data" / "kyndryl-docs-test"
+LOG_DIR = Path().cwd() / "logs"
 
 # Chunking
 CHUNK_SIZE = 200      # characters per chunk (~150-250 tokens)
@@ -16,11 +13,17 @@ BATCH_SIZE = 64       # batch building of index
 MILVUS_HOST = "localhost"
 MILVUS_PORT = "19530"
 SIMILARITY_METRIC_TYPE = "IP"
+
+# **TO EDIT TO TEST**
+EMBEDDING_MODEL_NAME = "sentence-transformers/all-mpnet-base-v2" # Matroyshka: "tomaarsen/mpnet-base-nli-matryoshka"
 INDEX_TYPE = "IVF_PQ"
-HYPERPARAMETERS = {
+INDEXING_HYPERPARAMETERS = {
     "nlist": 1,  # nlist=1 simulates flat exhaustive search
     "m": 16,     # number of subvectors
     "nbits": 8   # bits per subvector
+}
+EMBEDDING_MODEL_KWARGS = { # None if using default params
+    "truncate_dim": 64 # for Matroyoshka model
 }
 DATASET_NAME = "kyndryl_pdfs"
 INDEX_SEARCH_PARAMS = None
