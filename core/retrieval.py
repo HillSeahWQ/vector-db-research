@@ -5,6 +5,7 @@ from sentence_transformers import SentenceTransformer
 
 from utils.logger import get_logger
 from utils.vectordb import get_milvus_connection
+from core.embedder import get_embedding_model
 
 
 logger = get_logger(__name__)
@@ -42,9 +43,10 @@ def search_milvus(
     # Connect to Milvus (if not already connected)
     get_milvus_connection(alias=alias, host=host, port=port)
 
+    model = get_embedding_model(embedding_model, embedding_model_kwargs)
+    
     # Generate embeddings for queries
     logger.info(f"Encoding {len(queries)} queries using {embedding_model} ...")
-    model = SentenceTransformer(embedding_model, **embedding_model_kwargs)
     query_embeddings = model.encode(queries, convert_to_numpy=True, normalize_embeddings=True)
 
     # Load the collection
