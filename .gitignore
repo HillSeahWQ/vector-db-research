@@ -183,3 +183,4 @@ pyrightconfig.json
 /*/runs
 /*/*/runs
 **/volumes
+**/logs
